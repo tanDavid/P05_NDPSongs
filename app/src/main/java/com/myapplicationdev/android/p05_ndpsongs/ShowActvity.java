@@ -42,9 +42,7 @@ public class ShowActvity extends AppCompatActivity {
                     filteral.add(i);
                 }
             }
-            if (filteral.size() > 0) {
-                aa = new SongArrayAdapter(this, R.layout.row, filteral);
-            }
+            aa = new SongArrayAdapter(this, R.layout.row, filteral);
             lvSongs.setAdapter(aa);
         });
 
@@ -56,23 +54,23 @@ public class ShowActvity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        spinner.setAdapter(aa);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String selected = spinner.getSelectedItem().toString();
-                DBHelper dbh = new DBHelper(ShowActvity.this);
-                al.clear();
-                al.addAll(dbh.getAllSongs());
-                dbh.close();
-                aa.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
+//        spinner.setAdapter(aa);
+//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                String selected = spinner.getSelectedItem().toString();
+//                DBHelper dbh = new DBHelper(ShowActvity.this);
+//                al.clear();
+//                al.addAll(dbh.getAllSongs());
+//                dbh.close();
+//                aa.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
 
     }
 

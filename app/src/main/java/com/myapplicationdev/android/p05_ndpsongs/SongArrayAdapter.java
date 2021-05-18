@@ -40,7 +40,7 @@ public class SongArrayAdapter extends ArrayAdapter<Song> {
         ImageView iv5 = (ImageView) rowView.findViewById(R.id.imageView5star);
 
         Song song = songs.get(position);
-        year.setText(song.getYear());
+        year.setText(String.valueOf(song.getYear()));
         title.setText(song.getTitle());
         singer.setText(song.getSingers());
 

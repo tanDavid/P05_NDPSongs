@@ -61,31 +61,25 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public ArrayList<Song> getAllSongs() {
-        ArrayList<Song> songArr = new ArrayList<Song>();
-
-        String selectQuery = "SELECT " + COLUMN_ID + ","
-                + COLUMN_TITLE + ","
-                + COLUMN_SINGERS + ","
-                + COLUMN_YEAR + ","
-                + COLUMN_STARS
-                + " FROM " + TABLE_SONG;
+        ArrayList<Song> songs = new ArrayList<>();
+        String selectQuery = "SELECT "
+                + COLUMN_ID + ", "
+                + COLUMN_TITLE + ", "
+                + COLUMN_SINGERS + ", "
+                + COLUMN_YEAR + ", "
+                + COLUMN_STARS + " FROM " + TABLE_SONG;
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
-                int id = cursor.getInt(0);
-                String title = cursor.getString(1);
-                String singer = cursor.getString(1);
-                int year = cursor.getInt(1);
-                int stars = cursor.getInt(1);
-                Song song = new Song(id, title, singer, year, stars);
-                songArr.add(song);
+                songs.add(new Song(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4)));
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
-        return songArr;
+
+        return songs;
     }
 
     public int updateSong(Song data){

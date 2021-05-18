@@ -37,14 +37,13 @@ public class MainActivity extends AppCompatActivity {
                 String title = etTitle.getText().toString();
                 String singer = etSinger.getText().toString();
                 int year = Integer.valueOf(etYear.getText().toString());
+
                 int selectedId = radioGroup.getCheckedRadioButtonId();
-
-
                 rdButton = findViewById(selectedId);
                 int stars = Integer.valueOf(rdButton.getText().toString());
 
                 DBHelper dbh = new DBHelper(MainActivity.this);
-                long inserted_id = dbh.insertSong(title,singer,year, stars);
+                long inserted_id = dbh.insertSong(title, singer, year, stars);
                 dbh.close();
 
                 if (inserted_id != -1){

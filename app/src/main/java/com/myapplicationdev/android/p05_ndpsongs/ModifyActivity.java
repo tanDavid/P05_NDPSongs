@@ -35,10 +35,10 @@ public class ModifyActivity extends AppCompatActivity {
         btnDelete = findViewById(R.id.btnDelete);
         btnCancel = findViewById(R.id.btnCancel);
 
-        tvEditId.setText(song.getId());
+        tvEditId.setText(String.valueOf(song.getId()));
         etEditTitle.setText(song.getTitle());
         etEditSinger.setText(song.getSingers());
-        etEditYear.setText(song.getYear());
+        etEditYear.setText(String.valueOf(song.getYear()));
         rgStars.check(song.getStars());
 
         DBHelper dbh = new DBHelper(ModifyActivity.this);

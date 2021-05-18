@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -39,12 +40,15 @@ public class ModifyActivity extends AppCompatActivity {
         etEditYear.setText(song.getYear());
         rgStars.check(song.getStars());
 
-        btnUpdate.setOnClickListener(v -> {
+        DBHelper dbh = new DBHelper(ModifyActivity.this);
 
+        btnUpdate.setOnClickListener(v -> {
+            RadioButton rb = findViewById(rgStars.getCheckedRadioButtonId());
+            int result = dbh.updateSong(new Song(song.getId(), etEditTitle.getText().toString(), etEditSinger.getText().toString(), Integer.valueOf(etEditYear.getText().toString()), Integer.valueOf(rb.getText().toString())));
         });
 
         btnDelete.setOnClickListener(v -> {
-
+            int result = dbh.deleteSong(song.getId());
         });
 
         btnCancel.setOnClickListener(v -> {

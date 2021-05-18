@@ -105,7 +105,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
         return result;
     }
-    public int deleteNote(int id){
+    public int deleteSong(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         String condition = COLUMN_ID + "= ?";
         String[] args = {String.valueOf(id)};

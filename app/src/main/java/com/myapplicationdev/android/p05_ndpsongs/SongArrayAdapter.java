@@ -10,10 +10,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class SongArrayAdapter extends ArrayAdapter<Song> {
+
     Context context;
     ArrayList<Song> songs;
     int resource;
     TextView title, singer, year;
+    ImageView iv1, iv2, iv3, iv4, iv5;
 
     public SongArrayAdapter(Context context, int resource, ArrayList<Song> songs) {
         super(context, resource, songs);
@@ -42,7 +44,6 @@ public class SongArrayAdapter extends ArrayAdapter<Song> {
         title.setText(song.getTitle());
         singer.setText(song.getSingers());
 
-        //Check if the property for starts == 5, if so, "light" up the stars
         if (song.getStars() == 5) {
             iv5.setImageResource(android.R.drawable.btn_star_big_on);
             iv4.setImageResource(android.R.drawable.btn_star_big_on);
@@ -61,7 +62,7 @@ public class SongArrayAdapter extends ArrayAdapter<Song> {
         } else if (song.getStars() == 2) {
             iv2.setImageResource(android.R.drawable.btn_star_big_on);
             iv1.setImageResource(android.R.drawable.btn_star_big_on);
-        } else {
+        } else if (song.getStars() == 1) {
             iv1.setImageResource(android.R.drawable.btn_star_big_on);
         }
 

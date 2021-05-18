@@ -55,7 +55,7 @@ public class DBHelper extends SQLiteOpenHelper {
         if (result == -1){
             Log.d("DBHelper", "Insert failed");
         }else{
-            Log.d("SQL Insert","ID:"+ result); //id returned, shouldn’t be -1
+            Log.d("SQL Insert","ID:"+ result);
         }
         return result;
     }

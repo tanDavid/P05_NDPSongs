@@ -39,7 +39,24 @@ public class ModifyActivity extends AppCompatActivity {
         etEditTitle.setText(song.getTitle());
         etEditSinger.setText(song.getSingers());
         etEditYear.setText(String.valueOf(song.getYear()));
-        rgStars.check(song.getStars());
+
+        switch (song.getStars()) {
+            case 1:
+                rgStars.check(R.id.rb1);
+                break;
+            case 2:
+                rgStars.check(R.id.rb2);
+                break;
+            case 3:
+                rgStars.check(R.id.rb3);
+                break;
+            case 4:
+                rgStars.check(R.id.rb4);
+                break;
+            case 5:
+                rgStars.check(R.id.rb5);
+                break;
+        }
 
         DBHelper dbh = new DBHelper(ModifyActivity.this);
 

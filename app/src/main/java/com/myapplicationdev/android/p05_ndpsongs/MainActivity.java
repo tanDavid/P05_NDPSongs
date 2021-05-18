@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 Intent i = new Intent(MainActivity.this,
-                        ShowActivity.class);
+                        ShowActvity.class);
 
                 startActivity(i);
             }

@@ -46,18 +46,16 @@ public class ModifyActivity extends AppCompatActivity {
         btnUpdate.setOnClickListener(v -> {
             RadioButton rb = findViewById(rgStars.getCheckedRadioButtonId());
             int result = dbh.updateSong(new Song(song.getId(), etEditTitle.getText().toString(), etEditSinger.getText().toString(), Integer.valueOf(etEditYear.getText().toString()), Integer.valueOf(rb.getText().toString())));
+            this.finish();
         });
 
         btnDelete.setOnClickListener(v -> {
             int result = dbh.deleteSong(song.getId());
+            this.finish();
         });
 
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-
+        btnCancel.setOnClickListener(v -> {
+            this.finish();
         });
     }
 }

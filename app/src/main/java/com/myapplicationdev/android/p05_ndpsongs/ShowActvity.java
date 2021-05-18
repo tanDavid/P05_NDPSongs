@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,7 @@ public class ShowActvity extends AppCompatActivity {
     ListView lvSongs;
     ArrayList<Song> al, filteral;
     SongArrayAdapter aa;
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,5 +56,24 @@ public class ShowActvity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        spinner.setAdapter(aa);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String selected = spinner.getSelectedItem().toString();
+                DBHelper dbh = new DBHelper(ShowActvity.this);
+                al.clear();
+                al.addAll(dbh.getAllSongs());
+                dbh.close();
+                aa.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
     }
+
 }

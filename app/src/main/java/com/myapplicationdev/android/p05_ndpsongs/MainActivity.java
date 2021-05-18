@@ -60,9 +60,9 @@ public class MainActivity extends AppCompatActivity {
 
 
                 Intent i = new Intent(MainActivity.this,
-                        SongArrayAdapter.class);
+                        ShowActivity.class);
 
-                startActivityForResult(i,9);
+                startActivity(i);
             }
         });
 

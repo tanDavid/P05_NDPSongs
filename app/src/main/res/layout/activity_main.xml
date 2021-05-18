@@ -7,7 +7,6 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
     <TextView
         android:id="@+id/SongTitle"
         android:layout_width="match_parent"
@@ -44,7 +43,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="Enter year of release here"/>
 
     <TextView
         android:id="@+id/stars"

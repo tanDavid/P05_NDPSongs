@@ -42,6 +42,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_SONG);
         onCreate(db);
     }
+
     public long insertSong(String title, String singers, int year, int stars) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -59,10 +60,6 @@ public class DBHelper extends SQLiteOpenHelper {
         return result;
     }
 
-
-    //    This method will retrieve the records and construct
-//    every record to be a String. Thereafter, the Strings are
-//    put into an ArrayList to be returned.
     public ArrayList<Song> getAllSongs() {
         ArrayList<Song> songArr = new ArrayList<Song>();
 
@@ -90,6 +87,30 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
         return songArr;
     }
+
+    public ArrayList<Song> getSelectedSongs() {
+        ArrayList<Song> songs = new ArrayList<>();
+        String selectQuery = "SELECT "
+                + COLUMN_ID + ", "
+                + COLUMN_TITLE + ", "
+                + COLUMN_SINGERS + ", "
+                + COLUMN_YEAR + ", "
+                + COLUMN_STARS + " FROM " + TABLE_SONG
+                + " WHERE " + COLUMN_STARS + "=5";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                songs.add(new Song(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4)));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+
+        return songs;
+    }
+
     public int updateSong(Song data){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
